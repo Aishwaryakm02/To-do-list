@@ -1,81 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>To-Do List</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
 
-    <!-- Cursive Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #90ee90;
+      font-family: Arial, sans-serif;
 
-    <style>
-        body {
-            background-color: lightgreen;
-            font-family: Arial;
-            text-align: center;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-        h1 {
-            font-family: 'Pacifico', cursive;
-            color: brown;
-        }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
-        input {
-            padding: 10px;
-            width: 200px;
-            border-radius: 5px;
-            border: 1px solid gray;
-        }
+    h1 {
+      font-family: cursive;
+      color: brown;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
 
-        button {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: brown;
-            color: white;
-            cursor: pointer;
-        }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
 
-        li {
-            margin: 10px auto;
-            background: white;
-            padding: 10px;
-            width: 250px;
-            border-radius: 5px;
-        }
-    </style>
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: brown;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      background: #f2f2f2;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li button {
+      width: auto;
+      padding: 5px 10px;
+      background: red;
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
 
 <body>
 
+  <div class="container">
     <h1>📝 My To-Do List</h1>
 
-    <input id="taskInput" type="text" placeholder="Enter a task">
+    <input type="text" id="taskInput" placeholder="Enter a task">
     <button onclick="addTask()">Add</button>
 
     <ul id="taskList"></ul>
+  </div>
 
-    <script>
-        function addTask() {
-            let input = document.getElementById("taskInput");
-            let task = input.value;
+  <script>
+    function addTask() {
+      let input = document.getElementById("taskInput");
+      let task = input.value;
 
-            if (task === "") {
-                alert("Please enter a task!");
-                return;
-            }
+      if (task === "") {
+        alert("Please enter a task");
+        return;
+      }
 
-            let li = document.createElement("li");
-            li.innerHTML = task + 
-                " <button onclick='removeTask(this)' style='background:red; margin-left:10px;'>❌</button>";
+      let li = document.createElement("li");
+      li.innerHTML = task;
 
-            document.getElementById("taskList").appendChild(li);
+      let deleteBtn = document.createElement("button");
+      deleteBtn.innerText = "X";
+      deleteBtn.onclick = function () {
+        li.remove();
+      };
 
-            input.value = "";
-        }
+      li.appendChild(deleteBtn);
+      document.getElementById("taskList").appendChild(li);
 
-        function removeTask(button) {
-            button.parentElement.remove();
-        }
-    </script>
+      input.value = "";
+    }
+  </script>
 
 </body>
 </html>
