@@ -9,8 +9,9 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #90ee90;
+      background-color: #f5e6d3; /* lightest brown */
       font-family: Arial, sans-serif;
+      color: #4b2e2e; /* dark brown */
 
       display: flex;
       justify-content: center;
@@ -21,7 +22,7 @@
     .container {
       width: 90%;
       max-width: 400px;
-      background: white;
+      background: #fffaf5;
       padding: 20px;
       border-radius: 12px;
       text-align: center;
@@ -29,29 +30,30 @@
     }
 
     h1 {
+      color: #4b2e2e;
       font-family: cursive;
-      color: brown;
-      font-size: 2rem;
-      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 0.9rem;
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
       border-radius: 5px;
-      margin-bottom: 10px;
+      border: 1px solid #ccc;
     }
 
     button {
       width: 100%;
-      padding: 12px;
-      background-color: brown;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #6b3e3e;
       color: white;
       border: none;
       border-radius: 5px;
-      font-size: 1rem;
       cursor: pointer;
     }
 
@@ -62,60 +64,96 @@
     }
 
     li {
-      background: #f2f2f2;
+      background: #f0e0d6;
       padding: 10px;
       margin-top: 8px;
       border-radius: 5px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
 
     li button {
       width: auto;
-      padding: 5px 10px;
-      background: red;
+      padding: 5px;
+      background: #8b0000;
       font-size: 0.8rem;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>📝 My To-Do List</h1>
+<div class="container">
+
+  <!-- Welcome Section -->
+  <div id="welcomeSection">
+    <h1>👋 Welcome!</h1>
+    <p>This is your personal To-Do List app.</p>
+    <p>It helps you stay organized and manage your daily tasks efficiently.</p>
+    <p><b>Don’t skip your to-do list!</b> It keeps you focused and productive 😊</p>
+
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="startApp()">Start</button>
+  </div>
+
+  <!-- To-Do Section -->
+  <div id="todoSection" class="hidden">
+    <h1 id="userTitle"></h1>
 
     <input type="text" id="taskInput" placeholder="Enter a task">
-    <button onclick="addTask()">Add</button>
+    <button onclick="addTask()">Add Task</button>
 
     <ul id="taskList"></ul>
   </div>
 
-  <script>
-    function addTask() {
-      let input = document.getElementById("taskInput");
-      let task = input.value;
+</div>
 
-      if (task === "") {
-        alert("Please enter a task");
-        return;
-      }
+<script>
+  let userName = "";
 
-      let li = document.createElement("li");
-      li.innerHTML = task;
+  function startApp() {
+    userName = document.getElementById("nameInput").value;
 
-      let deleteBtn = document.createElement("button");
-      deleteBtn.innerText = "X";
-      deleteBtn.onclick = function () {
-        li.remove();
-      };
-
-      li.appendChild(deleteBtn);
-      document.getElementById("taskList").appendChild(li);
-
-      input.value = "";
+    if (userName === "") {
+      alert("Please enter your name");
+      return;
     }
-  </script>
+
+    document.getElementById("welcomeSection").classList.add("hidden");
+    document.getElementById("todoSection").classList.remove("hidden");
+
+    document.getElementById("userTitle").innerText =
+      userName + ", enter your To-Do List 📝";
+  }
+
+  function addTask() {
+    let input = document.getElementById("taskInput");
+    let task = input.value;
+
+    if (task === "") {
+      alert("Enter a task!");
+      return;
+    }
+
+    let li = document.createElement("li");
+    li.innerText = task;
+
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "X";
+    deleteBtn.onclick = function () {
+      li.remove();
+    };
+
+    li.appendChild(deleteBtn);
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+  }
+</script>
 
 </body>
 </html>
