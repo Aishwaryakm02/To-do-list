@@ -1,32 +1,21 @@
-📝 To-Do List App
+# To-Do List Web App
 
-A simple and interactive To-Do List web application to manage daily tasks efficiently.
+A simple and clean To-Do List website built using HTML, CSS, and JavaScript to help users stay organized and productive.
 
-🚀 Live Demo
+## 🌐 Live Demo
+Check it out here: [To-Do List](https://aishwaryakm02.github.io/To-do-list/)
 
-👉 https://aishwaryakm02.github.io/To-do-list/
+## ✨ Features
+- Add tasks easily
+- Mark tasks as completed
+- Delete tasks
+- Simple and user-friendly UI
+- Clean design with soothing colors
 
-✨ Features
-
-- ➕ Add new tasks
-- ✅ Mark tasks as completed
-- ❌ Delete tasks
-- 🎨 Clean and user-friendly interface
-
-🛠️ Built With
-
+## 🚀 Tech Stack
 - HTML
 - CSS
 - JavaScript
 
-📌 About the Project
-
-This project helps users keep track of their daily activities and stay organized. It is beginner-friendly and demonstrates basic DOM manipulation using JavaScript.
-
-🙋‍♀️ Author
-
-Aishwarya KM
-
----
-
-⭐ If you like this project, consider giving it a star!
+## 📌 Note
+Stay consistent and don’t skip your to-do list—small efforts daily lead to big results!
